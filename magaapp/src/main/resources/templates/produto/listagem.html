@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{template.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/listagem.css">
+</head>
+
+<body>
+    <main class="container" layout:fragment="conteudo">
+        <span class="container_button">
+            <input placeholder="Digite sua busca" type="search" name="" id="">
+            <a class="button" href="/">Inicio</a>
+            <a class="button" href="/produto">Cadastrar</a>
+        </span>
+        <h1 class="title">Lista de Produtos</h1>
+        <table class="table_container">
+            <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr th:each="produto : ${lista}">
+                    <td th:text="${produto.nome}"></td>
+                    <td th:text="${produto.quant}"></td>
+                    <td th:text="${produto.preco}"></td>
+                    <td>
+                        <a class="editar" th:href="@{/produto/formProd(id=${produto.id})}">Editar</a>
+
+                        <form action="/produto" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <input type="hidden" name="id" th:value="${produto.id}">
+                            <input class="delete" type="submit" value="Excluir">
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script src="/js/listagem.js"></script>

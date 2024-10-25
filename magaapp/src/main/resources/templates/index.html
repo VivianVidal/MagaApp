@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{template.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>MagaApp</title>
+</head>
+
+<body>
+    <main layout:fragment="conteudo">
+        <header class="header">
+            <div class="container_nav">
+                <h1>Bem-vindo !</h1>
+                <nav class="nav">
+                    <a class="button" href="/produto/listagem">Listar Produtos</a>
+                    <a class="button" href="/produto">Cadastrar Produto</a>
+                </nav>
+            </div>
+        </header>
+    </main>

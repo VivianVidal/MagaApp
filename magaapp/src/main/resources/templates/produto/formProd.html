@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{template.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/produto.css">
+    <title>Cadastro de Produto</title>
+</head>
+
+<body>
+        <main class="container" layout:fragment="conteudo">
+            <h1 class="title">Cadastro de Produto</h1>
+            <form class="form_container" th:action="@{/produto}" method="post">
+                <input type="hidden" th:if="${produto.id}" name="id" th:value="${produto.id}" />
+
+                <label for="nome">Nome:</label>
+                <input placeholder="Biscoito" type="text" name="nome" id="nome" th:value="${produto.nome}" required>
+
+                <div class="div_container">
+                    <span>
+                        <label for="nome">Quantidade:</label>
+                        <input placeholder="2" type="text" name="quant" th:value="${produto.quant}" required>
+                    </span>
+                    <span>
+                        <label  for="nome">Preço: </label>
+                        <input  type="text" name="preco" th:value="${produto.preco}" required>
+                    </span>
+                </div>
+
+                <button class="button"  type="submit" value="Salvar">Enviar</button>
+                <a class="button" href="/produto/listagem">Listar</a>
+                <a class="button" href="/produto/listagem">Cancelar</a>
+            </form>
+        </main>
+    <script src="/js/produto.js"></script>
